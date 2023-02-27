@@ -1,9 +1,9 @@
 import './landing.scss';
 
 import React, { useEffect } from 'react';
-import { delay, motion } from 'framer-motion';
 
 import Logo from '../../components/Logo/Logo';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 function Landing() {
@@ -12,7 +12,7 @@ function Landing() {
   useEffect(() => {
     setTimeout(() => {
       navigate('/menu');
-    }, 2700);
+    }, 2800);
   }, []);
 
   const draw = {
@@ -21,7 +21,7 @@ function Landing() {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { type: "spring", duration: 2.5, bounce: 0 },
+        pathLength: { type: 'spring', duration: 2.5, bounce: 0 },
         opacity: { duration: 0.01 },
       },
     },
