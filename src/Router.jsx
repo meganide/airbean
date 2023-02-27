@@ -1,10 +1,12 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import Landing from "./views/Landing/Landing";
+
 function Router() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Root />,
+      element: <Landing />,
     },
   ]);
 
