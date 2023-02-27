@@ -4,12 +4,13 @@
 
 .landing {
   font-family: font.$rufina;
-  background-color: #38846d;
+  // background-color: #38846d;
   height: 100vh;
   color: white;
   @include mixin.center(true);
   gap: 1rem;
   position: relative;
+  overflow-x: hidden;
 
   &__bg {
     position: absolute;
@@ -23,6 +24,10 @@
     }
   }
 
+  &__hero {
+    text-align: center;
+  }
+
   &__heading {
     font-size: 2.625rem;
   }
@@ -32,4 +37,22 @@
     font-family: font.$workSans;
     letter-spacing: 0.3em;
   }
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -25%);
+    overflow: visible;
+  }
+}
+
+circle {
+  stroke-width: 4px;
+  stroke-linecap: round;
+  fill: transparent;
+  overflow: visible;
+  stroke: #ffffff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }

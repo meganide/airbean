@@ -18,7 +18,7 @@ function Logo() {
   };
 
   return (
-    <article className="logo">
+    <motion.article className="logo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{duration: 1.2}}>
       <motion.svg
         width="38"
         height="35"
@@ -38,7 +38,7 @@ function Logo() {
           }}
         />
       </motion.svg>
-    </article>
+    </motion.article>
   );
 }
 
