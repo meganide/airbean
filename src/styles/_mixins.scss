@@ -1,5 +1,10 @@
-@mixin center {
+@mixin center($col: false) {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @if $col {
+    flex-direction: column;
+  }
+
 }
