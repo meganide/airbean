@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Cart from './components/Cart/Cart.jsx';
 
 import Landing from "./views/Landing/Landing";
 
@@ -7,6 +8,10 @@ function Router() {
     {
       path: '/',
       element: <Landing />,
+    },
+    {
+      path: '/cart', 
+      element: <Cart />
     },
   ]);
 
