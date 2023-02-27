@@ -1,5 +1,35 @@
 @use '../../styles/fonts' as font;
+@use '../../styles/variables' as col;
+@use '../../styles/mixins' as mixin;
 
-.heading {
+.landing {
   font-family: font.$rufina;
+  background-color: #38846d;
+  height: 100vh;
+  color: white;
+  @include mixin.center(true);
+  gap: 1rem;
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+
+    &--right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &__heading {
+    font-size: 2.625rem;
+  }
+
+  &__slogan {
+    font-size: 0.6rem;
+    font-family: font.$workSans;
+    letter-spacing: 0.3em;
+  }
 }
