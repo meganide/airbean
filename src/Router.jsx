@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
 
 import About from "./views/About/About";
 import Landing from "./views/Landing/Landing";
@@ -17,6 +18,10 @@ function Router() {
     {
       path: "/profile",
       element: <Profile />,
+    },
+    {
+      path: "/orderhistory",
+      element: <OrderHistory />,
     },
   ]);
 
