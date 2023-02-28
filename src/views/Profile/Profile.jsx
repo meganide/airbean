@@ -31,6 +31,7 @@ function Profile() {
 
   return (
     <AuthLayout>
+    {/* TODO: if is logged in show history else show authform */}
       <AuthForm formInfo={formInfo} showLogin={showLogin} setShowLogin={setShowLogin} />
     </AuthLayout>
   );
