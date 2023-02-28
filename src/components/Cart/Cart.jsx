@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import "../Cart/Cart.scss"
 
 function Popup(props) {
   return (
@@ -8,7 +9,6 @@ function Popup(props) {
         <h2>Your Order</h2>
         <p>Order: {props.order}</p>
         <p>Total Amount: {props.totalAmount}</p>
-        <button onClick={props.closePopup}>Close</button>
       </div>
     </div>
   );
@@ -25,7 +25,7 @@ function Cart() {
 
   return (
     <div className="app">
-      <button onClick={togglePopup}>Show Popup</button>
+      <button className='cart__button' onClick={togglePopup}></button>
       {showPopup && 
         <Popup 
           order={order} 
