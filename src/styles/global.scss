@@ -59,3 +59,8 @@ p {
 #root, #__next {
   isolation: isolate;
 }
+
+#root {
+  margin: 0 auto;
+  width: 23.43rem;
+}
