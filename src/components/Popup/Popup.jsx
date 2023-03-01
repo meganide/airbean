@@ -1,16 +1,18 @@
-import "./popup.scss"
-
+import "./popup.scss";
 
 function Popup(props) {
+  const { totalAmount, children } = props;
+
   return (
     <div className="popup">
+      <div className="arrow"></div>
       <div className="popup-inner">
-        <h1>Din beställning</h1>        
-        {props.children}
+        <h1>Din beställning</h1>
+        {children}
         <section className="total">
-        <p className="sum">Totalt</p>  
-        <div class="horizontal-dotted-line"></div>
-        <p> {props.totalAmount}Kr</p>
+          <p className="sum">Totalt</p>
+          <div className="horizontal-dotted-line" />
+          <p>{`${totalAmount}Kr`}</p>
         </section>
         <p className="moms">inkl moms + drönarleverans</p>
       </div>
@@ -19,5 +21,4 @@ function Popup(props) {
   );
 }
 
-export default Popup
-
+export default Popup;

@@ -4,46 +4,50 @@
 
 .popup {
   margin: 5%;
-  margin-top: 65px;
+  margin-top: 73px;
   width: 90%;
   background: #ffffff;
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   z-index: 2;
   min-height: inherit;
+
+  .arrow {
+    border-top: 5px solid white;
+    &:after {
+      content: '';
+      position: fixed;
+      margin: -20px 280px;
+      width: 0;
+      height: 0;
+      border-bottom: 30px solid white;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+    }
+  }
 
   h1 {
     font-family: font.$ptSerif;
     display: flex;
     justify-content: center;
-    margin-top: 40.77px;
+    margin: 40.77px 0 44px;
     font-size: 32px;
     font-weight: 700;
-    margin-bottom: 44px;
   }
 
   .total {
     display: flex;
     justify-content: space-between;
-    max-height: auto;
   }
 
-  p {
+  p, .sum {
     font-family: font.$ptSerif;
     font-size: 23px;
     font-weight: 700;
-    margin-right: 17px;
-    margin-left: 13px;
+    margin: 0 17px;
     line-height: 27.6px;
   }
-  .sum {
-    font-family: font.$ptSerif;
-    font-size: 23px;
-    font-weight: 700;
-    margin-right: 17px;
-    margin-left: 13px;
-    line-height: 27.6px;
-  }
+
   .horizontal-dotted-line {
     border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
     width: 70%;
@@ -61,13 +65,10 @@
     width: 248px;
     height: 55px;
     border-radius: 50px;
-    margin-top: 34px;
-    margin-left: 47px;
-    margin-bottom: 41px;
+    margin: 34px 0 41px 47px;
     position: relative;
     font-family: font.$ptSerif;
     font-weight: 700;
     font-size: 24px;
   }
-
 }
