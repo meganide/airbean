@@ -1,48 +1,44 @@
+import '../Cart/Cart.scss';
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import "../Cart/Cart.scss"
+
 import { BsBag } from 'react-icons/bs';
-
-
-function Popup(props) {
-  return (
-    <div className="popup">
-      <div className="popup-inner">
-        <h1>Din beställning</h1>
-        <p> {props.order}</p>
-        <p> Totalt: {props.totalAmount}</p>
-      </div>
-    </div>
-  );
-}
+import { Link } from 'react-router-dom';
+import Popup from '../Popup/Popup';
+import { cartReducer } from '../../reducers/cartReducer';
+import { useSelector } from 'react-redux';
 
 function Cart() {
   const [showPopup, setShowPopup] = useState(false);
-  const order = "Bryggkaffe";
+  const order = 'Bryggkaffe';
   const totalAmount = 0;
+
+  const cart = useSelector((state) => state);
+  console.log(cart);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
-  }
+  };
 
   return (
-    <div className="app">
-      <button className='cart__button' onClick={togglePopup}><BsBag /> </button>
-      {showPopup && 
-        <Popup 
-          order={order} 
-          totalAmount={totalAmount} 
-          closePopup={togglePopup}
-        />
-      }
+    <div className="cart">
+      <button className="cart__button" onClick={togglePopup}>
+        <BsBag />{' '}
+      </button>
+      {showPopup && (
+        <Popup order={order} totalAmount={totalAmount} closePopup={togglePopup}>
+          {cart.map((product) => {
+            return (
+              <>
+                <h1>{product.name}</h1>
+                <h2>{product.price}</h2>
+              </>
+            );
+          })}
+        </Popup>
+      )}
     </div>
   );
 }
 
 export default Cart;
-
-
-
-
-
-
