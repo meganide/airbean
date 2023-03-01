@@ -1,12 +1,12 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import Menu from "../src/views/Menu/Menu"
+import Menu from "../src/views/Menu/Menu";
 import About from "./views/About/About";
 import Landing from "./views/Landing/Landing";
 import Status from "./views/Status/Status";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import Profile from "./views/Profile/Profile";
-
+import Nav from "./components/Nav/Nav";
 
 function Router() {
   const router = createBrowserRouter([
@@ -15,8 +15,8 @@ function Router() {
       element: <Landing />,
     },
     {
-      path: '/menu',
-      element: <Menu />
+      path: "/menu",
+      element: <Menu />,
     },
     {
       path: "/about",
@@ -33,6 +33,10 @@ function Router() {
     {
       path: "/status",
       element: <Status />,
+    },
+    {
+      path: "/nav",
+      element: <Nav />,
     },
   ]);
 

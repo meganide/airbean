@@ -1,0 +1,44 @@
+@use "../../styles/mixins" as *;
+@use "../../styles//fonts" as *;
+
+.nav {
+  h1 {
+    font-family: $ptSerif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+  }
+
+  button {
+    background: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  color: #ffffff;
+  min-height: inherit;
+
+  &__close {
+    padding: 20px;
+  }
+
+  &__icon {
+    padding: 20px;
+  }
+
+  &__underline {
+    width: 48px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  &__container {
+    @include center;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    margin-top: 80px;
+  }
+}
