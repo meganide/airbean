@@ -23,24 +23,6 @@ function Menu() {
     getMenu();
   }, []);
 
-
-  console.log(menu);
-
-  return (
-    <article className="menu">
-      <img
-        className="menu__image"
-        src="../../public/header.svg"
-        alt="colored leafs"
-      />
-      <h1 className="menu__title">Meny</h1>
-      <Products menu={menu} />
-      <img
-        className="menu__image menu__image-rotated"
-        src="../../public/header.svg"
-        alt="colored leafs"
-      />
-
   return (
     <article className="menu">
       <img className="menu__image" src="../../public/header.svg" alt="colored leafs" />
