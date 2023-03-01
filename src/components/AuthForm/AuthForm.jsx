@@ -1,6 +1,25 @@
 import './authform.scss';
 
+import { httpSignup } from '../../utils/requests';
+
 function AuthForm(props) {
+  async function handleAuth(e) {
+    e.preventDefault();
+
+    let username = e.target.namn.value;
+    let password = e.target.password.value;
+
+    const signup = await httpSignup({ username, password });
+
+    if (signup.success) {
+      e.target.namn.value = '';
+      e.target.password.value = '';
+      props.setShowLogin(true);
+    } else {
+      // show error: signup.message
+    }
+  }
+
   return (
     <section className="authform">
       <header className="authform__header">
@@ -8,7 +27,7 @@ function AuthForm(props) {
         <h1>{props.formInfo.heading}</h1>
         <p>{props.formInfo.text}</p>
       </header>
-      <form className="authform__form">
+      <form className="authform__form" onSubmit={handleAuth}>
         <section className="authform__input">
           <label htmlFor="namn">Namn</label>
           <input type="text" name="namn" />
