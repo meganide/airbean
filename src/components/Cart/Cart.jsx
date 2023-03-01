@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../Cart/Cart.scss"
+import { BsBag } from 'react-icons/bs';
+
 
 function Popup(props) {
   return (
     <div className="popup">
       <div className="popup-inner">
-        <h2>Your Order</h2>
+        <h1>Din beställning</h1>
         <p>Order: {props.order}</p>
         <p>Total Amount: {props.totalAmount}</p>
       </div>
@@ -25,7 +27,7 @@ function Cart() {
 
   return (
     <div className="app">
-      <button className='cart__button' onClick={togglePopup}></button>
+      <button className='cart__button' onClick={togglePopup}><BsBag /></button>
       {showPopup && 
         <Popup 
           order={order} 
