@@ -10,8 +10,64 @@
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   z-index: 2;
+  min-height: inherit;
 
   h1 {
     font-family: font.$ptSerif;
+    display: flex;
+    justify-content: center;
+    margin-top: 40.77px;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 44px;
   }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    max-height: auto;
+  }
+
+  p {
+    font-family: font.$ptSerif;
+    font-size: 23px;
+    font-weight: 700;
+    margin-right: 17px;
+    margin-left: 13px;
+    line-height: 27.6px;
+  }
+  .sum {
+    font-family: font.$ptSerif;
+    font-size: 23px;
+    font-weight: 700;
+    margin-right: 17px;
+    margin-left: 13px;
+    line-height: 27.6px;
+  }
+  .horizontal-dotted-line {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+    width: 70%;
+  }
+
+  .moms {
+    font-family: font.$workSans;
+    font-size: 12px;
+    margin-left: 13px;
+    font-weight: 400;
+  }
+
+  .takeMyMoney {
+    background-color: col.$brown;
+    width: 248px;
+    height: 55px;
+    border-radius: 50px;
+    margin-top: 34px;
+    margin-left: 47px;
+    margin-bottom: 41px;
+    position: relative;
+    font-family: font.$ptSerif;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
 }
