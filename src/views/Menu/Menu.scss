@@ -2,8 +2,11 @@
 
 .menu {
     background-color: $pink;
-    max-height: 800px;
     overflow: hidden;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &__title{
         text-align: center;
@@ -15,7 +18,6 @@
     }
 
     &__image-rotated {
-        margin-top: 35px;
-        transform: rotate(180deg);
+        transform: translateY(3rem) rotate(180deg);
     }
 }
