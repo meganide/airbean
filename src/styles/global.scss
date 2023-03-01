@@ -15,10 +15,6 @@
 /*
   3. Allow percentage-based heights in the application
 */
-html,
-body {
-  height: 100%;
-}
 /*
   Typographic tweaks!
   4. Add accessible line-height
@@ -77,6 +73,7 @@ p {
 /*
   9. Create a root stacking context
 */
+
 #root,
 #__next {
   isolation: isolate;
@@ -85,4 +82,5 @@ p {
 #root {
   margin: 0 auto;
   width: 23.43rem;
+  min-height: 100vh;
 }

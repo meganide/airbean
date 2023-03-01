@@ -1,0 +1,23 @@
+@use '../../styles/variables.scss' as *;
+
+.menu {
+    background-color: $pink;
+    overflow: hidden;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__title{
+        text-align: center;
+        font-size: 42px;
+    }
+
+    &__section {
+        padding: 10px;
+    }
+
+    &__image-rotated {
+        transform: translateY(3rem) rotate(180deg);
+    }
+}
