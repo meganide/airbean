@@ -1,25 +1,25 @@
-@import "../../styles/mixins";
-@import "../../styles//variables";
-@import "../../styles//fonts";
-
-p {
-  font-family: $workSans;
-}
-
-h1,
-h2 {
-  font-family: $ptSerif;
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
+@import '../../styles/mixins';
+@import '../../styles//variables';
+@import '../../styles//fonts';
 
 .about {
   @include center;
   flex-direction: column;
   background-color: $pink;
+
+  p {
+    font-family: $workSans;
+  }
+
+  h1,
+  h2 {
+    font-family: $ptSerif;
+  }
+
+  h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
 }
 
 .about__article {

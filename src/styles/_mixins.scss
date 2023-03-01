@@ -1,3 +1,6 @@
+@use "./variables" as *;
+@use "./fonts" as *;
+
 @mixin center($col: false) {
   display: flex;
   justify-content: center;
@@ -7,4 +10,16 @@
     flex-direction: column;
   }
 
+}
+
+@mixin button() {
+  background-color: $brown;
+  border-radius: 50px;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  font-family: $ptSerif;
+  cursor: pointer;
+  align-self: center;
+  padding: 0.5rem 2rem;
 }
