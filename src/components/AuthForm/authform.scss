@@ -55,6 +55,10 @@
     }
   }
 
+  &__error {
+    color: red;
+  }
+
   &__button {
     @include mixin.button;
   }

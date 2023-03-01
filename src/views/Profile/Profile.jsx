@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
 import AuthLayout from '../../components/AuthLayout/AuthLayout';
+import OrderHistory from '../../components/OrderHistory/OrderHistory';
+import { httpUserToken } from '../../utils/requests';
 
 function Profile() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
-
-  useEffect(() => {
-    // TODO: check if isloggedin via token
-  }, []);
+  const [userCredentials, setUserCredentials] = useState({
+    username: '',
+    password: '',
+  });
 
   let formInfo;
 
@@ -29,10 +31,34 @@ function Profile() {
     };
   }
 
+  async function isTokenValid() {
+    const tokenStatus = await httpUserToken();
+
+    if (tokenStatus.success) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
+
+  useEffect(() => {
+    isTokenValid();
+  }, []);
+
   return (
     <AuthLayout>
-    {/* TODO: if is logged in show history else show authform */}
-      <AuthForm formInfo={formInfo} showLogin={showLogin} setShowLogin={setShowLogin} />
+      {isLoggedIn ? (
+        <OrderHistory userCredentials={userCredentials} />
+      ) : (
+        <AuthForm
+          formInfo={formInfo}
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
+          isTokenValid={isTokenValid}
+          userCredentials={userCredentials}
+          setUserCredentials={setUserCredentials}
+        />
+      )}
     </AuthLayout>
   );
 }
