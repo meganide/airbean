@@ -9,8 +9,8 @@ function Popup(props) {
     <div className="popup">
       <div className="popup-inner">
         <h1>Din beställning</h1>
-        <p>Order: {props.order}</p>
-        <p>Total Amount: {props.totalAmount}</p>
+        <p> {props.order}</p>
+        <p> Totalt: {props.totalAmount}</p>
       </div>
     </div>
   );
@@ -18,8 +18,8 @@ function Popup(props) {
 
 function Cart() {
   const [showPopup, setShowPopup] = useState(false);
-  const order = "Example Order";
-  const totalAmount = 100;
+  const order = "Bryggkaffe";
+  const totalAmount = 0;
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -27,7 +27,7 @@ function Cart() {
 
   return (
     <div className="app">
-      <button className='cart__button' onClick={togglePopup}><BsBag /></button>
+      <button className='cart__button' onClick={togglePopup}><BsBag /> </button>
       {showPopup && 
         <Popup 
           order={order} 
@@ -40,3 +40,9 @@ function Cart() {
 }
 
 export default Cart;
+
+
+
+
+
+
