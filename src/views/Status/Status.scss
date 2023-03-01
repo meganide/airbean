@@ -1,20 +1,20 @@
-@import "../../styles/mixins";
-@import "../../styles//variables";
-@import "../../styles//fonts";
-
-span {
-  font-weight: bold;
-}
-
-h1 {
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 120%;
-}
+@use "../../styles/mixins" as *;
+@use "../../styles//variables" as *;
+@use "../../styles//fonts" as *;
 
 .status {
+  span {
+    font-weight: bold;
+  }
+
+  h1 {
+    font-family: "PT Serif";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 120%;
+  }
+
   @include center;
   flex-direction: column;
   justify-content: space-between;
@@ -22,43 +22,43 @@ h1 {
   height: 667px;
   color: #ffffff;
   padding: 35px;
-}
 
-.status__paragraph {
-  font-family: "Work Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-}
+  &__paragraph {
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+  }
 
-.status__section {
-  @include center;
-  flex-direction: column;
-  text-align: center;
-}
+  &__section {
+    @include center;
+    flex-direction: column;
+    text-align: center;
+  }
 
-.status__drone {
-  @include center;
-  flex-direction: column;
-}
+  &__drone {
+    @include center;
+    flex-direction: column;
+  }
 
-.status_cup {
-  position: absolute;
-  margin-top: 6rem;
-}
+  &__cup {
+    position: absolute;
+    margin-top: 6rem;
+  }
 
-.status__button {
-  background-color: #ffffff;
-  border-radius: 50px;
-  border: none;
-  width: 184px;
-  height: 55px;
-  color: $brown;
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 80px;
-  cursor: pointer;
+  &__button {
+    background-color: #ffffff;
+    border-radius: 50px;
+    border: none;
+    width: 184px;
+    height: 55px;
+    color: $brown;
+    font-family: "PT Serif";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 80px;
+    cursor: pointer;
+  }
 }
