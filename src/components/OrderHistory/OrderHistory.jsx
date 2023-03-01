@@ -1,61 +1,59 @@
-import React from "react";
-import "./OrderHistory.scss";
-import AuthLayout from "../AuthLayout/AuthLayout";
+import './OrderHistory.scss';
 
-function OrderHistory() {
+import React, { useEffect, useState } from 'react';
+
+import OrderItem from '../Order/OrderItem';
+import { httpUserToken } from '../../utils/requests';
+
+function OrderHistory(props) {
+  const {userCredentials} = props;
+
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    async function getUserHistory() {
+      const userOrderHistory = await httpUserToken(true);
+      if (userOrderHistory) {
+        setOrders(userOrderHistory.orderHistory);
+      }
+    }
+
+    getUserHistory();
+  }, []);
+
+  function getTotalSpent() {
+    if (orders.length > 0) {
+      return orders.reduce((previousValue, currentValue) => {
+        return previousValue + currentValue.total;
+      }, 0);
+    }
+
+    return 0;
+  }
+
   return (
-    <AuthLayout>
-      <section className="order-history">
-        <section className="order-history__profile">
-          <img src="/Public/Profile.svg" />
-          <h1>Sixten Kaffelövér</h1>
-        </section>
-        <section className="order-history__orders-container">
-          <h2>Orderhistorik</h2>
-          <div className="order-history__order-item">
-            <article>
-              <h3>#AB1123282323Z</h3>
-              <p>total ordersumma</p>
-            </article>
-            <article>
-              <h3>20/03/06</h3>
-              <p className="order-history__price">442 kr</p>
-            </article>
-          </div>
-          <div className="order-history__under-line"></div>
-          <div className="order-history__order-item">
-            <article>
-              <h3>#AB1128382323X</h3>
-              <p>total ordersumma</p>
-            </article>
-            <article>
-              <h3>20/03/06</h3>
-              <p className="order-history__price">333 kr</p>
-            </article>
-          </div>
-          <div className="order-history__under-line"></div>
-          <div className="order-history__order-item">
-            <article>
-              <h3>#AB1444482323X</h3>
-              <p>total ordersumma</p>
-            </article>
-            <article>
-              <h3>20/03/06</h3>
-              <p className="order-history__price">893 kr</p>
-            </article>
-          </div>
-          <div className="order-history__under-line order-history__under-line--bold"></div>
-          <div className="order-history__order-item">
-            <article>
-              <h3 className="order-history__summary">Totalt spenderat</h3>
-            </article>
-            <article>
-              <h3 className="order-history__summary">1669 kr</h3>
-            </article>
-          </div>
+    <section className="order-history">
+      <section className="order-history__profile">
+        <img src="/Public/Profile.svg" />
+        <h1>{userCredentials.username}</h1>
+      </section>
+      <section className="order-history__orders-container">
+        <h2>Orderhistorik</h2>
+        {orders && orders.length > 0 ? (
+          orders.map((order, index) => {
+            return <OrderItem key={index} order={order} index={index} orderLength={orders.length} />;
+          })
+        ) : (
+          <p className="order-history__info">Oops, här var det knapert!</p>
+        )}
+        <section className="order-history__order-item">
+          <article className="order-history__summary">
+            <h3>Totalt spenderat</h3>
+            <h3>{orders && orders.length > 0 ? getTotalSpent() : 0} kr</h3>
+          </article>
         </section>
       </section>
-    </AuthLayout>
+    </section>
   );
 }
 

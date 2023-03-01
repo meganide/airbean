@@ -1,6 +1,6 @@
-@use "../../styles/fonts" as *;
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use '../../styles/fonts' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .order-history {
   h1,
@@ -37,23 +37,18 @@
     color: rgba(255, 255, 255, 0.5);
   }
 
+  &__info {
+    font-size: 1rem !important;
+    margin-top: 0.2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
   &__profile {
     @include center;
     flex-direction: column;
     margin-top: 50px;
     color: #ffff;
     gap: 7px;
-  }
-
-  &__under-line {
-    height: 0;
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 5px;
-
-    &--bold {
-      border: 1px solid rgba(255, 255, 255, 0.6);
-    }
   }
 
   &__orders-container {
@@ -64,16 +59,14 @@
     gap: 3px;
   }
 
-  &__order-item {
+  &__summary {
     display: flex;
     justify-content: space-between;
+
+    h3 {
+      margin-top: 0;
+    }
   }
 
-  &__price {
-    text-align: end;
-  }
 
-  &__summary {
-    margin-top: 5px;
-  }
 }

@@ -1,27 +1,88 @@
 import './authform.scss';
 
+import { httpAuth } from '../../utils/requests';
+import { useState } from 'react';
+
 function AuthForm(props) {
+  const {formInfo, showLogin, setShowLogin, isTokenValid, userCredentials, setUserCredentials} = props;
+  
+  const [error, setError] = useState('');
+
+
+  function handleAuth(e) {
+    e.preventDefault();
+    setError('');
+
+    if (showLogin) {
+      login(userCredentials);
+    } else {
+      signup(userCredentials);
+    }
+  }
+
+  async function signup(userInfo) {
+    const signup = await httpAuth(userInfo, false);
+    
+    if (signup.success) {
+      setUserCredentials({
+        username: '',
+        password: '',
+      });
+      setShowLogin(true);
+    } else {
+      setError(signup.message);
+    }
+  }
+
+  async function login(userInfo) {
+    const login = await httpAuth(userInfo);
+
+    if (login.success) {
+      sessionStorage.setItem('token', login.token);
+      isTokenValid();
+    } else {
+      setError(login.message);
+    }
+  }
+
+  function handleNavigate() {
+    setError('');
+    setUserCredentials({
+      username: '',
+      password: '',
+    });
+    setShowLogin(!showLogin);
+  }
+
+  function handleOnChange(e) {
+    setUserCredentials((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
   return (
     <section className="authform">
       <header className="authform__header">
         <img src="./assets/pictures/Logo.svg" alt="" />
-        <h1>{props.formInfo.heading}</h1>
-        <p>{props.formInfo.text}</p>
+        <h1>{formInfo.heading}</h1>
+        <p>{formInfo.text}</p>
       </header>
-      <form className="authform__form">
+      <form className="authform__form" onSubmit={handleAuth}>
         <section className="authform__input">
-          <label htmlFor="namn">Namn</label>
-          <input type="text" name="namn" />
+          <label htmlFor="username">Namn</label>
+          <input type="text" name="username" value={userCredentials.username} onChange={handleOnChange} />
         </section>
         <section className="authform__input">
           <label htmlFor="password">Lösenord</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" value={userCredentials.password} onChange={handleOnChange} />
         </section>
         <p className="authform__redirect">
-          {props.formInfo.redirectText}
-          <span onClick={() => props.setShowLogin(!props.showLogin)}>här</span>
+          {formInfo.redirectText}
+          <span onClick={handleNavigate}>här</span>
         </p>
-        <button className="authform__button">{props.formInfo.btnText}</button>
+        <p className="authform__error">{error}</p>
+        <button className="authform__button">{formInfo.btnText}</button>
       </form>
     </section>
   );

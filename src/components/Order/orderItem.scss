@@ -1,0 +1,32 @@
+.order {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__top {
+    p {
+      margin: 0.3rem 0;
+    }
+  }
+
+  &__price {
+    text-align: end;
+    margin-top: 0.3rem;
+    color: red;
+  }  
+  
+  &__under-line {
+    height: 0;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 5px;
+
+    &--bold {
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      margin: 1rem 0;
+    }
+  }
+
+
+}
