@@ -1,33 +1,22 @@
-import './Products.scss'
-import { useDispatch } from 'react-redux';
-
-import { addProduct } from '../../actions/AddProduct';
-
+import Product from "../Product/Product";
 
 function Products(props) {
-    const { title, desc, price } = props;
+    const { menu } = props;
+    console.log(menu)
 
-    const dispatch = useDispatch();
-
-    function handelClick() {
-        const product = {
-            name: title,
-            price: price
-        }
-        dispatch(addProduct(product))
-      }
-
-    return(
-        <article className='product'>
-            <button className='product__button product__button-font'
-            onClick={() => {handelClick()}}>+</button>
-            <section className='product__details'>
-                <h2> {title} </h2>
-                <p> {desc} </p>
-            </section>
-            <h2> {price} </h2>
-        </article>
+    return (
+        <section className='menu__section'>
+            {menu.map((product) => {
+                return (
+                    <Product
+                        title={product.title}
+                        desc={product.desc}
+                        price={product.price}
+                        key={product.id} />
+                )
+            })}
+        </section>
     )
 }
 
-export default Products; 
+export default Products;

@@ -1,10 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Menu from "../src/views/Menu/Menu"
-
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./views/About/About";
-
 import Landing from "./views/Landing/Landing";
 
 function Router() {
