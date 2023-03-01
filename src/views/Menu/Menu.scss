@@ -1,0 +1,21 @@
+@use '../../styles/variables.scss' as *;
+
+.menu {
+    background-color: $pink;
+    max-height: 800px;
+    overflow: hidden;
+
+    &__title{
+        text-align: center;
+        font-size: 42px;
+    }
+
+    &__section {
+        padding: 10px;
+    }
+
+    &__image-rotated {
+        margin-top: 35px;
+        transform: rotate(180deg);
+    }
+}
