@@ -1,4 +1,5 @@
 import "./Nav.scss";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -34,8 +35,6 @@ function Nav() {
           <h1 onClick={() => handleNavigation("/about")}>Vårt kaffe</h1>
           <div className="nav__underline"></div>
           <h1 onClick={() => handleNavigation("/profile")}>Min profil</h1>
-          <div className="nav__underline"></div>
-          <h1 onClick={() => handleNavigation("/orderHistory")}>Orderstatus</h1>
           <div className="nav__underline"></div>
         </section>
       )}
