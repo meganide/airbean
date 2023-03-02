@@ -19,7 +19,7 @@ function Nav() {
   return (
     <section
       className="nav"
-      style={{ backgroundColor: isOpen ? "#2f2926" : "" }}
+      style={{ backgroundColor: isOpen ? "#2f2926" : "", width: isOpen ? 'inherit' : 'auto'  }}
     >
       <button onClick={toggleMenu}>
         {isOpen ? (
