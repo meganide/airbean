@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="about">
       <section className="about__section">
-        <img src="/Public/header.svg" />
+        <img src="./assets/pictures/header.svg" />
         <article className="about__article">
           <h1>Vårt Kaffe</h1>
           <p className="about__paragraph">
@@ -36,11 +36,11 @@ function About() {
         </article>
       </section>
       <footer className="about__footer">
-        <img src="/Public/image 1.jpg" className="footer__portrait" />
+        <img src="./assets/pictures/image 1.jpg" className="footer__portrait" />
         <h2>Eva Cortado</h2>
         <p className="footer__paragrah">VD & Grundare</p>
         <section className="footer__section">
-          <img src="/Public/header.svg" className="footer__img" />
+          <img src="./assets/pictures/header.svg" className="footer__img" />
         </section>
       </footer>
     </div>

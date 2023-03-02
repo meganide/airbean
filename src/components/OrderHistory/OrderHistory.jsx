@@ -34,7 +34,7 @@ function OrderHistory() {
   return (
     <section className="order-history">
       <section className="order-history__profile">
-        <img src="/Public/Profile.svg" />
+        <img src="./assets/pictures/Profile.svg" />
         <h1>{name}</h1>
       </section>
       <section className="order-history__orders-container">

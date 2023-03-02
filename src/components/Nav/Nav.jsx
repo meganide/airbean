@@ -23,9 +23,9 @@ function Nav() {
     >
       <button onClick={toggleMenu}>
         {isOpen ? (
-          <img className="nav__close" src="/Public/close.png" />
+          <img className="nav__close" src="./assets/pictures/close.png" />
         ) : (
-          <img className="nav__icon" src="/Public/navicon.png" />
+          <img className="nav__icon" src="./assets/pictures/navicon.png" />
         )}
       </button>
       {isOpen && (
