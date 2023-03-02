@@ -1,39 +1,41 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Cart from './components/Cart/Cart.jsx';
 
-import Menu from "../src/views/Menu/Menu"
-import About from "./views/About/About";
-import Landing from "./views/Landing/Landing";
-import Status from "./views/Status/Status";
-import OrderHistory from "./components/OrderHistory/OrderHistory";
-import Profile from "./views/Profile/Profile";
-
+import About from './views/About/About';
+import Landing from './views/Landing/Landing';
+import Menu from '../src/views/Menu/Menu';
+import NavbarLayout from './components/NavbarLayout/NavbarLayout';
+import Profile from './views/Profile/Profile';
+import Status from './views/Status/Status';
 
 function Router() {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Landing />,
-    },
-    {
-      path: '/menu',
-      element: <Menu />
-    },
-    {
-      path: "/about",
-      element: <About />,
-    },
-    {
-      path: "/profile",
-      element: <Profile />,
-    },
-    {
-      path: "/orderhistory",
-      element: <OrderHistory />,
-    },
-    {
-      path: "/status",
-      element: <Status />,
+      path: '/',
+      element: <NavbarLayout />,
+      children: [
+        {
+          path: '/',
+          element: <Landing />,
+        },
+        {
+          path: '/menu',
+          element: <Menu />,
+        },
+        {
+          path: '/about',
+          element: <About />,
+        },
+        {
+          path: '/profile',
+          element: <Profile />,
+        },
+
+        {
+          path: '/status',
+          element: <Status />,
+        },
+      ],
     },
     {
       path: '/cart', 

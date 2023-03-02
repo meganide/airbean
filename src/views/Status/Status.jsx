@@ -5,8 +5,8 @@ function Status() {
     <div className="status">
       <p className="status__paragraph">Ordernummer #12DV23F</p>
       <section className="status__drone">
-        <img src="/Public/drone.png" />
-        <img className="status__cup" src="/Public/cup.png" />
+        <img src="./assets/pictures/drone.png" />
+        <img className="status__cup" src="./assets/pictures/cup.png" />
       </section>
       <section className="status__section">
         <h1>Din beställning är på väg!</h1>
