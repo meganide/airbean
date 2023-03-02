@@ -1,8 +1,11 @@
-import './Menu.scss';
-
 import { useEffect, useState } from 'react';
 
+import { Link } from "react-router-dom";
+
+import './Menu.scss';
+
 import Products from "../../components/Products/Products";
+
 
 function Menu() {
   const [menu, setMenu] = useState([]);
@@ -24,12 +27,12 @@ function Menu() {
   }, []);
 
   return (
-    <article className="menu">
-      <img className="menu__image" src="./assets/pictures/header.svg" alt="colored leafs" />
-      <h1 className="menu__title">Meny</h1>
-      <Products menu={menu} />
-      <img className="menu__image menu__image-rotated" src="./assets/pictures/header.svg" alt="colored leafs" />
-
+    <article className='menu'>
+      <img className='menu__image' src="../../public/header.svg" alt="colored leafs" />
+      <h1 className='menu__title'>Meny</h1>
+      <Link to="/cart">Go to cart lol</Link>
+      <Products menu={ menu } />
+      <img className='menu__image menu__image-rotated' src="../../public/header.svg" alt="colored leafs" />
     </article>
   );
 }

@@ -1,0 +1,93 @@
+@use '../../styles/variables' as col;
+@use '../../styles/fonts' as font;
+@use '../../styles/mixins' as mixin;
+
+.cart {
+    top: 72.23px;
+    left: 17px;
+    display: flex;
+    justify-content: flex-end;
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cart__item-count {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        color: #fff;
+        background-color: col.$orange;
+        font-size: 12px;
+        font-family: font.$ptSerif;
+        line-height: 14.4px;
+        width: 25px;
+        height: 25px;
+        padding: 4px 4px;
+        border-radius: 50%;
+        font-weight: 700;
+    }
+
+    .cart__name {
+        font-family: font.$ptSerif;
+        font-size: 20px;
+        margin-left: 15px;
+        font-weight: 700px;
+    }
+
+    .amount {
+        font-size: 14px;
+        font-family: font.$workSans;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .horizontal-dotted-line {
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+        width: 100%;
+    }
+
+    &__add {
+        font-size: 20px;
+        font-family: font.$workSans;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__delete {
+        font-size: 20px;
+        font-family: font.$workSans;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+    }
+
+    .cart__price {
+        font-size: 16px;
+        font-family: font.$workSans;
+        font-weight: 400;
+        margin-left: 15px;
+    }
+
+    button {
+        background-color: col.$brown;
+        width: 3.75rem;
+        height: 3.75rem;
+        border-radius: 100%;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        margin-right: 20px;
+        margin-top: 16px;
+    }
+
+}
