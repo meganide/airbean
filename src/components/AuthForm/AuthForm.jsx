@@ -1,13 +1,20 @@
 import './authform.scss';
 
+import { changeName } from '../../actions/userActions';
 import { httpAuth } from '../../utils/requests';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 function AuthForm(props) {
-  const {formInfo, showLogin, setShowLogin, isTokenValid, userCredentials, setUserCredentials} = props;
-  
-  const [error, setError] = useState('');
+  const { formInfo, showLogin, setShowLogin, isTokenValid } = props;
 
+  const dispatch = useDispatch();
+
+  const [error, setError] = useState('');
+  const [userCredentials, setUserCredentials] = useState({
+    username: '',
+    password: '',
+  });
 
   function handleAuth(e) {
     e.preventDefault();
@@ -22,7 +29,7 @@ function AuthForm(props) {
 
   async function signup(userInfo) {
     const signup = await httpAuth(userInfo, false);
-    
+
     if (signup.success) {
       setUserCredentials({
         username: '',
@@ -39,6 +46,7 @@ function AuthForm(props) {
 
     if (login.success) {
       sessionStorage.setItem('token', login.token);
+      dispatch(changeName(userInfo.username));
       isTokenValid();
     } else {
       setError(login.message);

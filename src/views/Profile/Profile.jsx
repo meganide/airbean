@@ -8,10 +8,6 @@ import { httpUserToken } from '../../utils/requests';
 function Profile() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
-  const [userCredentials, setUserCredentials] = useState({
-    username: '',
-    password: '',
-  });
 
   let formInfo;
 
@@ -34,7 +30,7 @@ function Profile() {
   async function isTokenValid() {
     const tokenStatus = await httpUserToken();
 
-    if (tokenStatus.success) {
+    if (tokenStatus && tokenStatus.success) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
@@ -48,15 +44,13 @@ function Profile() {
   return (
     <AuthLayout>
       {isLoggedIn ? (
-        <OrderHistory userCredentials={userCredentials} />
+        <OrderHistory />
       ) : (
         <AuthForm
           formInfo={formInfo}
           showLogin={showLogin}
           setShowLogin={setShowLogin}
           isTokenValid={isTokenValid}
-          userCredentials={userCredentials}
-          setUserCredentials={setUserCredentials}
         />
       )}
     </AuthLayout>
