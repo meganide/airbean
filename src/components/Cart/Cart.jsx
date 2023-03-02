@@ -9,7 +9,7 @@ function Cart() {
   const [showPopup, setShowPopup] = useState(false);
   const order = '';
 
-  const cart = useSelector((state) => state);
+  const cart = useSelector((state) => state.cart);
   console.log(cart);
 
   const togglePopup = () => {
