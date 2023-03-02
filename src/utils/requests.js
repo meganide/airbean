@@ -31,19 +31,19 @@ async function httpUserToken(history = false) {
 
   const token = sessionStorage.getItem('token');
 
-
-  try {
-    const response = await fetch(FETCH_URL, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json', authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return error;
+  if (token) {
+    try {
+      const response = await fetch(FETCH_URL, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', authorization: `Bearer ${token}` },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
   }
 }
-
 
 export { httpAuth, httpUserToken };

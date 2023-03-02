@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react';
 
 import OrderItem from '../Order/OrderItem';
 import { httpUserToken } from '../../utils/requests';
+import { useSelector } from 'react-redux';
 
-function OrderHistory(props) {
-  const {userCredentials} = props;
-
+function OrderHistory() {
   const [orders, setOrders] = useState([]);
+  const name = useSelector((state) => state.user);
 
   useEffect(() => {
     async function getUserHistory() {
@@ -35,7 +35,7 @@ function OrderHistory(props) {
     <section className="order-history">
       <section className="order-history__profile">
         <img src="/Public/Profile.svg" />
-        <h1>{userCredentials.username}</h1>
+        <h1>{name}</h1>
       </section>
       <section className="order-history__orders-container">
         <h2>Orderhistorik</h2>
