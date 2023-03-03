@@ -7,6 +7,7 @@ import Products from "../../components/Products/Products";
 
 function Menu() {
   const [menu, setMenu] = useState([]);
+  console.log(menu)
 
   useEffect(() => {
 
