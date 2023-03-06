@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 function Cart() {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const [ifDiscount, setIfDiscount] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState('');
 
   const cart = useSelector((state) => state.cart);
@@ -19,14 +21,26 @@ function Cart() {
 
   useEffect(() => {
     setError('');
+    setIfDiscount(false);
+    setTotalPrice(cart.reduce((acc, product) => acc + product.quantity * product.price, 0));
+    discount();
   }, [cart]);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
-  //calculate total price
-  const totalPrice = cart.reduce((acc, product) => acc + product.quantity * product.price, 0);
+  console.log(cart);
+
+  function discount() {
+    const bryggkaffeInCart = cart.find((product) => product.name === 'Bryggkaffe');
+    const adolfsbakelseInCart = cart.find((product) => product.name === 'Gustav Adolfsbakelse');
+
+    if (bryggkaffeInCart && adolfsbakelseInCart) {
+      setIfDiscount(true)
+      setTotalPrice((prev) => prev - 49);
+    }
+  }
 
   //total items in cart
   const totalItems = cart.reduce((acc, product) => {
@@ -43,9 +57,7 @@ function Cart() {
 
     try {
       const userToken = await httpUserToken();
-      const isLoggedIn = userToken ? userToken.success :  false;
-
-      console.log('isLoggedIn', isLoggedIn);
+      const isLoggedIn = userToken ? userToken.success : false;
 
       const createOrder = await httpCreateOrder(isLoggedIn, details);
       if (createOrder.eta) {
@@ -67,7 +79,7 @@ function Cart() {
         <div className="cart__item-count">{totalItems}</div>
       </button>
       {showPopup && (
-        <Popup totalAmount={totalPrice} closePopup={togglePopup} handleCreateOrder={handleCreateOrder} error={error}>
+        <Popup totalAmount={totalPrice} closePopup={togglePopup} handleCreateOrder={handleCreateOrder} error={error} ifDiscount={ifDiscount}>
           {cart.map((product) => (
             <React.Fragment key={product.name}>
               <section className="cart__total">
