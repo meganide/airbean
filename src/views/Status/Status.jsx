@@ -1,45 +1,38 @@
-import "./Status.scss";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import './Status.scss';
+
+import { httpGetOrderStatus, httpUserToken } from '../../utils/requests';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 function Status() {
   const navigate = useNavigate();
   const [eta, setEta] = useState(null);
-  const [error, setError] = useState(null);
-  const [orderNumber, setOrderNumber] = useState("");
+  const [error, setError] = useState('');
+
+  const { state } = useLocation();
+  const orderNumber = state.orderNumber;
 
   useEffect(() => {
-    const BASE_URL = "https://airbean.awesomo.dev/api/beans/order/";
-    const token = "token";
+    async function getOrderStatus() {
+      setError('');
 
-    async function getStatus() {
-      try {
-        const response = await fetch(`${BASE_URL}status/${orderNumber}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
+      const userToken = await httpUserToken();
+      const isLoggedIn = userToken ? userToken.success : false;
+      const orderStatus = await httpGetOrderStatus(isLoggedIn, orderNumber);
 
-        if (data.eta !== undefined) {
-          setEta(data.eta);
-        } else {
-          setEta(0);
-        }
-        setOrderNumber(data.orderNr);
-      } catch (error) {
-        setError(error.message);
+      console.log(orderStatus);
+
+      if (orderStatus.eta) {
+        setEta(orderStatus.eta);
+      }
+
+      if (!orderStatus.success) {
+        setError(orderStatus.message);
       }
     }
 
-    if (orderNumber !== "") {
-      getStatus();
-    }
-  }, [orderNumber]);
+    getOrderStatus();
+  }, []);
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -47,16 +40,12 @@ function Status() {
 
   return (
     <div className="status">
-      {orderNumber !== "" && (
+      {orderNumber !== '' && (
         <>
           <p className="status__paragraph">Ordernummer #{orderNumber}</p>
           <section className="status__drone">
             <img src="./assets/pictures/drone.png" alt="Drone" />
-            <img
-              className="status__cup"
-              src="./assets/pictures/cup.png"
-              alt="Cup"
-            />
+            <img className="status__cup" src="./assets/pictures/cup.png" alt="Cup" />
           </section>
           <section className="status__section">
             {eta !== null && (
@@ -64,17 +53,14 @@ function Status() {
                 <h1>Din beställning är på väg!</h1>
                 <p>
                   <span>{eta} </span>
-                  {eta === 1 ? "minut" : "minuter"}
+                  {eta === 1 ? 'minut' : 'minuter'}
                 </p>
               </>
             )}
-            {eta === null && <h1>Laddar...</h1>}
             {eta === 0 && <h1>Ingen aktiv beställning</h1>}
+            {error && <p>{error}</p>}
           </section>
-          <button
-            className="status__button"
-            onClick={() => handleNavigation("/menu")}
-          >
+          <button className="status__button" onClick={() => handleNavigation('/menu')}>
             Ok, cool!
           </button>
         </>
