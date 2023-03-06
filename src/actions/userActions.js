@@ -5,4 +5,11 @@ function changeName(name) {
   };
 }
 
-export { changeName };
+function changeOrderNr(orderNr) {
+  return {
+    type: 'CHANGE-ORDERNR',
+    payload: orderNr,
+  };
+}
+
+export { changeName, changeOrderNr };

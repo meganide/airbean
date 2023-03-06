@@ -36,6 +36,8 @@ function Nav() {
           <div className="nav__underline"></div>
           <h1 onClick={() => handleNavigation("/profile")}>Min profil</h1>
           <div className="nav__underline"></div>
+          <h1 onClick={() => handleNavigation("/status")}>Orderstatus</h1>
+          <div className="nav__underline"></div>
         </section>
       )}
     </section>

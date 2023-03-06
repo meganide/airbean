@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { BsBag } from 'react-icons/bs';
 import Popup from '../Popup/Popup';
+import { changeOrderNr } from '../../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 
 function Cart() {
@@ -30,14 +31,12 @@ function Cart() {
     setShowPopup(!showPopup);
   };
 
-  console.log(cart);
-
   function discount() {
     const bryggkaffeInCart = cart.find((product) => product.name === 'Bryggkaffe');
     const adolfsbakelseInCart = cart.find((product) => product.name === 'Gustav Adolfsbakelse');
 
     if (bryggkaffeInCart && adolfsbakelseInCart) {
-      setIfDiscount(true)
+      setIfDiscount(true);
       setTotalPrice((prev) => prev - 49);
     }
   }
@@ -62,8 +61,9 @@ function Cart() {
       const createOrder = await httpCreateOrder(isLoggedIn, details);
       if (createOrder.eta) {
         togglePopup();
+        dispatch(changeOrderNr(createOrder.orderNr));
         dispatch(clearCart());
-        navigate('/status', { state: { orderNumber: createOrder.orderNr } });
+        navigate('/status');
       } else {
         setError(createOrder.errors[0].msg);
       }
@@ -79,7 +79,13 @@ function Cart() {
         <div className="cart__item-count">{totalItems}</div>
       </button>
       {showPopup && (
-        <Popup totalAmount={totalPrice} closePopup={togglePopup} handleCreateOrder={handleCreateOrder} error={error} ifDiscount={ifDiscount}>
+        <Popup
+          totalAmount={totalPrice}
+          closePopup={togglePopup}
+          handleCreateOrder={handleCreateOrder}
+          error={error}
+          ifDiscount={ifDiscount}
+        >
           {cart.map((product) => (
             <React.Fragment key={product.name}>
               <section className="cart__total">

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
-  const name = useSelector((state) => state.user);
+  const name = useSelector((state) => state.user.name);
 
   useEffect(() => {
     async function getUserHistory() {

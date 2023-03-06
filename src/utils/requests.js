@@ -74,7 +74,6 @@ async function httpGetOrderStatus(isLoggedIn = false, orderNumber) {
 
   if (isLoggedIn) {
     const token = sessionStorage.getItem('token');
-    console.log(token)
     headers = { 'Content-Type': 'application/json', authorization: `Bearer ${token}` };
   }
 
