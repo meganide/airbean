@@ -2,14 +2,15 @@ import "./Menu.scss";
 
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
-import Products from "../../components/Products/Products";
+import Products from '../../components/Products/Products';
 
 function Menu() {
   const [menu, setMenu] = useState([]);
+  console.log(menu)
 
   useEffect(() => {
     const BASE_URL = "https://airbean.awesomo.dev/api/beans/";
+
 
     async function getMenu() {
       try {
