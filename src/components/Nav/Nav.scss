@@ -2,10 +2,11 @@
 @use '../../styles//fonts' as *;
 
 .nav {
-  position: fixed;
+  position: relative;
+  top: 0;
+  left: 0;
   z-index: 500;
   color: #ffffff;
-  width: inherit;
 
   h1 {
     font-family: $ptSerif;

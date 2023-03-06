@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Cart from './components/Cart/Cart.jsx';
 
 import About from './views/About/About';
+import Cart from './components/Cart/Cart.jsx';
 import Landing from './views/Landing/Landing';
 import Menu from '../src/views/Menu/Menu';
 import NavbarLayout from './components/NavbarLayout/NavbarLayout';
@@ -36,10 +36,6 @@ function Router() {
           element: <Status />,
         },
       ],
-    },
-    {
-      path: '/cart', 
-      element: <Cart />
     },
   ]);
 

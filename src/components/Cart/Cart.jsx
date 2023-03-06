@@ -1,6 +1,7 @@
 import '../Cart/Cart.scss';
 
 import React, { useState } from 'react';
+
 import { BsBag } from 'react-icons/bs';
 import Popup from '../Popup/Popup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,20 +27,17 @@ function Cart() {
 
   function handleClick(product) {
     dispatch(deleteProduct(product))
-    console.log(id)
   }
 
   return (
     <div className="cart">
       <button className="cart__button" onClick={togglePopup}>
         <BsBag />
-        <div className='cart__item-count'>{totalItems}</div>
+        <div className="cart__item-count">{totalItems}</div>
       </button>
       {showPopup && (
-        <Popup order='' totalAmount={totalPrice} closePopup={togglePopup}>
-          {cart.map((product) => (
-            
-            
+        <Popup totalAmount={totalPrice} closePopup={togglePopup}>
+          {cart.map((product) =>
             <React.Fragment key={product.name}>
               {console.log(product)}
               <section className='cart__total'>
@@ -51,7 +49,7 @@ function Cart() {
                 <button className='cart__delete'
                 onClick={() => handleClick(product)}>-</button>
               </section>
-              <p className='cart__price'>{product.price}</p>
+              <p className="cart__price">{product.price}</p>
             </React.Fragment>
           ))}
         </Popup>
@@ -59,6 +57,5 @@ function Cart() {
     </div>
   );
 }
-
 
 export default Cart;
