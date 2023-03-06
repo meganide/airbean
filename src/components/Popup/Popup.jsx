@@ -1,7 +1,7 @@
 import "./popup.scss";
 
 function Popup(props) {
-  const { totalAmount, children } = props;
+  const { totalAmount, children, handleCreateOrder, error } = props;
 
   return (
     <div className="popup">
@@ -16,7 +16,8 @@ function Popup(props) {
         </section>
         <p className="moms">inkl moms + drönarleverans</p>
       </div>
-      <button className="takeMyMoney">Take my money!</button>
+      {error.length > 0 && <p className="popup__error">🚨🚨{error}🚨🚨</p>}
+      <button className="takeMyMoney" onClick={handleCreateOrder}>Take my money!</button>
     </div>
   );
 }

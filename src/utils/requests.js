@@ -46,4 +46,49 @@ async function httpUserToken(history = false) {
   }
 }
 
-export { httpAuth, httpUserToken };
+async function httpCreateOrder(isLoggedIn = false, cart) {
+  let headers = { 'Content-Type': 'application/json' };
+
+  if (isLoggedIn) {
+    const token = sessionStorage.getItem('token');
+    headers = { 'Content-Type': 'application/json', authorization: `Bearer ${token}` };
+  }
+
+  try {
+    const response = await fetch(BASE_URL + '/beans/order', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(cart),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+
+async function httpGetOrderStatus(isLoggedIn = false, orderNumber) {
+  let headers = { 'Content-Type': 'application/json' };
+
+
+  if (isLoggedIn) {
+    const token = sessionStorage.getItem('token');
+    console.log(token)
+    headers = { 'Content-Type': 'application/json', authorization: `Bearer ${token}` };
+  }
+
+  try {
+    const response = await fetch(`${BASE_URL}/beans/order/status/${orderNumber}`, {
+      headers: headers,
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+
+export { httpAuth, httpUserToken, httpCreateOrder, httpGetOrderStatus };
