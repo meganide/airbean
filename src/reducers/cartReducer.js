@@ -2,7 +2,7 @@ const INITIAL_STATE = [];
 
 function cartReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'ADD-PRODUCT': {
+    case 'ADD_PRODUCT': {
       const productInState = state.find((product) => product.id === action.payload.id);
       if (productInState) {
         const updatedState = state.map((product) => {
@@ -12,7 +12,8 @@ function cartReducer(state = INITIAL_STATE, action) {
       }
       return [...state, action.payload];
     }
-    case 'DELETE-PRODUCT': {
+
+    case 'DELETE_PRODUCT': {
       if (action.payload.quantity === 1) {
         const deletedProduct = state.filter((product) => {
           return product.id !== action.payload.id;
@@ -29,9 +30,11 @@ function cartReducer(state = INITIAL_STATE, action) {
       });
       return updatedState;
     }
-    case 'CLEAR-CART': {
+
+    case 'CLEAR_CART': {
       return [];
     }
+    
     default:
       return state;
   }

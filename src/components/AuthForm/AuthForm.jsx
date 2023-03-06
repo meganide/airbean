@@ -72,7 +72,7 @@ function AuthForm(props) {
   return (
     <section className="authform">
       <header className="authform__header">
-        <img src="./assets/pictures/Logo.svg" alt="" />
+        <img src="./assets/pictures/Logo.svg" alt="logo" />
         <h1>{formInfo.heading}</h1>
         <p>{formInfo.text}</p>
       </header>

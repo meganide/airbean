@@ -1,7 +1,7 @@
-import "./orderItem.scss"
+import './orderItem.scss';
 
 function OrderItem(props) {
-  const {order, index, orderLength} = props;
+  const { order, index, orderLength } = props;
 
   return (
     <section className="order">
@@ -15,9 +15,7 @@ function OrderItem(props) {
           <p className="order__price">{order.total}</p>
         </article>
       </section>
-      <div
-        className={`order__under-line ${orderLength - 1 === index && 'order__under-line--bold'}`}
-      ></div>
+      <div className={`order__under-line ${orderLength - 1 === index && 'order__under-line--bold'}`}></div>
     </section>
   );
 }

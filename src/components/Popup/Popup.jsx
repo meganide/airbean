@@ -9,7 +9,9 @@ function Popup(props) {
       <div className="popup-inner">
         <h1>Din beställning</h1>
         {children}
-        {ifDiscount && <p className="popup__kampanj">Grattis! Du har aktiverat vårt 400 års jubileumkampanj på 49 kr! hehe</p>}
+        {ifDiscount && (
+          <p className="popup__kampanj">Grattis! Du har aktiverat vårt 400 års jubileumkampanj på 49 kr! hehe</p>
+        )}
         <section className="total">
           <p className="sum">Totalt</p>
           <div className="horizontal-dotted-line" />

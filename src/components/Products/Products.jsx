@@ -6,8 +6,7 @@ function Products(props) {
   return (
     <section className="menu__section">
       {menu.map((product) => {
-        
-        return <Product product={ product } key={ product.id } />;
+        return <Product product={product} key={product.id} />;
       })}
     </section>
   );

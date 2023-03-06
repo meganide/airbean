@@ -11,13 +11,18 @@ import { changeOrderNr } from '../../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 
 function Cart() {
+  const cart = useSelector((state) => state.cart);
+  
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [ifDiscount, setIfDiscount] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState('');
 
-  const cart = useSelector((state) => state.cart);
+  const totalItems = cart.reduce((acc, product) => {
+    return acc + (product.quantity ? product.quantity : 1);
+  }, 0);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,11 +45,6 @@ function Cart() {
       setTotalPrice((prev) => prev - 49);
     }
   }
-
-  //total items in cart
-  const totalItems = cart.reduce((acc, product) => {
-    return acc + (product.quantity ? product.quantity : 1);
-  }, 0);
 
   function handleClick(product) {
     dispatch(deleteProduct(product));

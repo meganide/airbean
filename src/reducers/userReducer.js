@@ -5,10 +5,10 @@ const INITIAL_STATE = {
 
 function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'CHANGE-NAME':
+    case 'CHANGE_NAME':
       return { ...state, name: action.payload };
 
-    case 'CHANGE-ORDERNR':
+    case 'CHANGE_ORDERNR':
       return { ...state, orderNr: action.payload };
 
     default:

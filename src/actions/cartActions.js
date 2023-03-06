@@ -1,20 +1,20 @@
 function addProduct(product) {
   return {
-    type: 'ADD-PRODUCT',
+    type: 'ADD_PRODUCT',
     payload: product,
   };
 }
 
 function deleteProduct(product) {
   return {
-    type: 'DELETE-PRODUCT',
+    type: 'DELETE_PRODUCT',
     payload: product,
   };
 }
 
 function clearCart() {
   return {
-    type: 'CLEAR-CART',
+    type: 'CLEAR_CART',
   };
 }
 

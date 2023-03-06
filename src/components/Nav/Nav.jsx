@@ -1,7 +1,7 @@
-import "./Nav.scss";
+import './Nav.scss';
 
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Nav() {
   const navigate = useNavigate();
@@ -17,10 +17,7 @@ function Nav() {
   };
 
   return (
-    <section
-      className="nav"
-      style={{ backgroundColor: isOpen ? "#2f2926" : "", width: isOpen ? 'inherit' : 'auto'  }}
-    >
+    <section className="nav" style={{ backgroundColor: isOpen ? '#2f2926' : '', width: isOpen ? 'inherit' : 'auto' }}>
       <button onClick={toggleMenu}>
         {isOpen ? (
           <img className="nav__close" src="./assets/pictures/close.png" />
@@ -30,13 +27,13 @@ function Nav() {
       </button>
       {isOpen && (
         <section className="nav__container">
-          <h1 onClick={() => handleNavigation("/menu")}>Meny</h1>
+          <h1 onClick={() => handleNavigation('/menu')}>Meny</h1>
           <div className="nav__underline"></div>
-          <h1 onClick={() => handleNavigation("/about")}>Vårt kaffe</h1>
+          <h1 onClick={() => handleNavigation('/about')}>Vårt kaffe</h1>
           <div className="nav__underline"></div>
-          <h1 onClick={() => handleNavigation("/profile")}>Min profil</h1>
+          <h1 onClick={() => handleNavigation('/profile')}>Min profil</h1>
           <div className="nav__underline"></div>
-          <h1 onClick={() => handleNavigation("/status")}>Orderstatus</h1>
+          <h1 onClick={() => handleNavigation('/status')}>Orderstatus</h1>
           <div className="nav__underline"></div>
         </section>
       )}

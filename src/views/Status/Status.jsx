@@ -43,10 +43,7 @@ function Status() {
     <div className="status">
       <>
         <p className="status__paragraph">Ordernummer #{orderNumber}</p>
-        <section className="status__drone">
-          <img src="./assets/pictures/drone.png" alt="Drone" />
-          <img className="status__cup" src="./assets/pictures/cup.png" alt="Cup" />
-        </section>
+        <img src="./assets/pictures/drone.svg" alt="Drone" />
         <section className="status__section">
           {eta !== null && (
             <>

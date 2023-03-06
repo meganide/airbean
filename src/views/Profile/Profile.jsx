@@ -46,12 +46,7 @@ function Profile() {
       {isLoggedIn ? (
         <OrderHistory />
       ) : (
-        <AuthForm
-          formInfo={formInfo}
-          showLogin={showLogin}
-          setShowLogin={setShowLogin}
-          isTokenValid={isTokenValid}
-        />
+        <AuthForm formInfo={formInfo} showLogin={showLogin} setShowLogin={setShowLogin} isTokenValid={isTokenValid} />
       )}
     </AuthLayout>
   );

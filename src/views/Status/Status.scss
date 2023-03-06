@@ -1,6 +1,6 @@
-@use "../../styles/mixins" as *;
-@use "../../styles//variables" as *;
-@use "../../styles//fonts" as *;
+@use '../../styles/mixins' as *;
+@use '../../styles//variables' as *;
+@use '../../styles//fonts' as *;
 
 .status {
   span {
@@ -8,7 +8,7 @@
   }
 
   h1 {
-    font-family: "PT Serif";
+    font-family: 'PT Serif';
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
@@ -24,12 +24,12 @@
   padding: 35px;
 
   &__paragraph {
-    font-family: "Work Sans";
+    font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    margin-top: 80px
+    margin-top: 80px;
   }
 
   &__section {
@@ -38,18 +38,8 @@
     text-align: center;
 
     p {
-      margin-top: 1rem
+      margin-top: 1rem;
     }
-  }
-
-  &__drone {
-    @include center;
-    flex-direction: column;
-  }
-
-  &__cup {
-    position: absolute;
-    margin-top: 6rem;
   }
 
   &__button {
@@ -59,7 +49,7 @@
     width: 184px;
     height: 55px;
     color: $brown;
-    font-family: "PT Serif";
+    font-family: 'PT Serif';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
