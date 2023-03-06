@@ -71,10 +71,8 @@ async function httpCreateOrder(isLoggedIn = false, cart) {
 async function httpGetOrderStatus(isLoggedIn = false, orderNumber) {
   let headers = { 'Content-Type': 'application/json' };
 
-
   if (isLoggedIn) {
     const token = sessionStorage.getItem('token');
-    console.log(token)
     headers = { 'Content-Type': 'application/json', authorization: `Bearer ${token}` };
   }
 

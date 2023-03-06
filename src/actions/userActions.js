@@ -1,8 +1,15 @@
 function changeName(name) {
   return {
-    type: 'CHANGE-NAME',
+    type: 'CHANGE_NAME',
     payload: name,
   };
 }
 
-export { changeName };
+function changeOrderNr(orderNr) {
+  return {
+    type: 'CHANGE_ORDERNR',
+    payload: orderNr,
+  };
+}
+
+export { changeName, changeOrderNr };

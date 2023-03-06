@@ -1,4 +1,4 @@
-import "./navbarLayout.scss"
+import './navbarLayout.scss';
 
 import Cart from '../Cart/Cart';
 import Nav from '../Nav/Nav';

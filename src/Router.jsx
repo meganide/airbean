@@ -30,7 +30,6 @@ function Router() {
           path: '/profile',
           element: <Profile />,
         },
-
         {
           path: '/status',
           element: <Status />,

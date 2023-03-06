@@ -2,15 +2,16 @@ import './Status.scss';
 
 import { httpGetOrderStatus, httpUserToken } from '../../utils/requests';
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Status() {
   const navigate = useNavigate();
   const [eta, setEta] = useState(null);
   const [error, setError] = useState('');
 
-  const { state } = useLocation();
-  const orderNumber = state.orderNumber;
+  const orderNumber = useSelector((state) => state.user.orderNr);
 
   useEffect(() => {
     async function getOrderStatus() {
@@ -19,8 +20,6 @@ function Status() {
       const userToken = await httpUserToken();
       const isLoggedIn = userToken ? userToken.success : false;
       const orderStatus = await httpGetOrderStatus(isLoggedIn, orderNumber);
-
-      console.log(orderStatus);
 
       if (orderStatus.eta) {
         setEta(orderStatus.eta);
@@ -31,7 +30,9 @@ function Status() {
       }
     }
 
-    getOrderStatus();
+    if (orderNumber) {
+      getOrderStatus();
+    }
   }, []);
 
   const handleNavigation = (path) => {
@@ -40,31 +41,26 @@ function Status() {
 
   return (
     <div className="status">
-      {orderNumber !== '' && (
-        <>
-          <p className="status__paragraph">Ordernummer #{orderNumber}</p>
-          <section className="status__drone">
-            <img src="./assets/pictures/drone.png" alt="Drone" />
-            <img className="status__cup" src="./assets/pictures/cup.png" alt="Cup" />
-          </section>
-          <section className="status__section">
-            {eta !== null && (
-              <>
-                <h1>Din beställning är på väg!</h1>
-                <p>
-                  <span>{eta} </span>
-                  {eta === 1 ? 'minut' : 'minuter'}
-                </p>
-              </>
-            )}
-            {eta === 0 && <h1>Ingen aktiv beställning</h1>}
-            {error && <p>{error}</p>}
-          </section>
-          <button className="status__button" onClick={() => handleNavigation('/menu')}>
-            Ok, cool!
-          </button>
-        </>
-      )}
+      <>
+        <p className="status__paragraph">Ordernummer #{orderNumber}</p>
+        <img src="./assets/pictures/drone.svg" alt="Drone" />
+        <section className="status__section">
+          {eta !== null && (
+            <>
+              <h1>Din beställning är på väg!</h1>
+              <p>
+                <span>{eta} </span>
+                {eta === 1 ? 'minut' : 'minuter'}
+              </p>
+            </>
+          )}
+          {!eta && <h1>Ingen aktiv beställning</h1>}
+          {error && <p>{error}</p>}
+        </section>
+        <button className="status__button" onClick={() => handleNavigation('/menu')}>
+          Ok, cool!
+        </button>
+      </>
     </div>
   );
 }
